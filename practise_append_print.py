@@ -47,8 +47,17 @@ class SLL:
                 temp = temp.next
                 
             prev.next = temp.next
-            return temp
-     
+            return temp 
+    
+    def search(self, value):
+        temp = self.head
+        while(temp.next != None):
+            if(temp.data == value):
+                print("Element is Found :- " , temp.data)
+                return
+            else:
+                temp = temp.next
+        print('Element is Not Found' , value)    
               
     def print(self):
         temp = self.head
@@ -63,6 +72,7 @@ obj.append(2)
 obj.append(3)
 obj.append(4)
 obj.append(5)
-obj.delete_a_node(5)
+#obj.search(6)
+#obj.delete_a_node(5)
 #obj.insert_any_position(0 , 6)
 obj.print()
