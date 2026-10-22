@@ -1,4 +1,3 @@
-
 class Node:
     def __init__(self, data , next = None):
         self.data = data
@@ -6,21 +5,25 @@ class Node:
         
 class SLL:
     def __init__(self , head = None):
-        
         self.head = head
         
-    def append(self, data):
-        temp = Node(data)
-        if(self.head == None):
-            self.head = temp
-            return
-        else:
-            t1 = self.head
-            while(t1.next != None):
-                t1 = t1.next
-            t1.next = temp
+    def append(self):
+        n = int(input('How Many Elemnts You wants to append :- '))
+        for i in range(1 , n + 1):
+            
+            data = int(input(f'Enter a {i} element :- '))
+            temp = Node(data)
+            if(self.head == None):
+                self.head = temp
+               
+            else:
+                t1 = self.head
+                while(t1.next != None):
+                    t1 = t1.next
+                t1.next = temp
     
     def insert_any_position(self, data , pos):
+        
         # check at first position
         temp = Node(data)
         t1 = self.head
@@ -51,7 +54,7 @@ class SLL:
     
     def search(self, value):
         temp = self.head
-        while(temp.next != None):
+        while(temp != None):
             if(temp.data == value):
                 print("Element is Found :- " , temp.data)
                 return
@@ -67,14 +70,14 @@ class SLL:
                 return
             else:
                 temp = temp.next
+        if(temp == None):
+            print('Element is not exisitng')
                 
     def find_middle(self):
         temp = self.head
         mid = self.head
-        prev = self.head
         while(temp != None and temp.next != None):
-            mid = prev.next 
-            prev = prev.next
+            mid = mid.next
             temp = temp.next.next 
               
         
@@ -84,11 +87,9 @@ class SLL:
     def find_middle_del(self):
         temp = self.head
         mid = self.head
-        prev = self.head
         while(temp != None and temp.next != None):
-            mid = prev.next 
-            t = prev
-            prev = prev.next
+            t = mid
+            mid = mid.next
             temp = temp.next.next 
                       
                 
@@ -172,10 +173,5 @@ class SLL:
         print('NULL')
         
 obj = SLL()
-obj.append(1)
-obj.append(2)
-obj.append(3)
-obj.append(4)
-obj.append(5)
-obj.len()
+obj.append()
 obj.print()
