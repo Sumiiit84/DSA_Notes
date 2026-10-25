@@ -28,6 +28,7 @@ class Stack:
         while(temp):
             st1.push(Node(temp.data))
             temp = temp.next
+            
     def print(self):
         if self.isEmpty():
             print('Stack is Empty')
@@ -45,5 +46,7 @@ obj.push(Node(2))
 obj.push(Node(3))
 obj.push(Node(4))
 obj.push(Node(5))
+obj.reversed()
+st1.print()
 
 
