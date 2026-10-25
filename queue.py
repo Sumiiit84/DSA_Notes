@@ -39,5 +39,8 @@ class LQueue:
                 temp = temp.next
             print('NULL')
 obj = LQueue()
-
+obj.enqueue(Node(10))
+obj.enqueue(Node(20))
+obj.enqueue(Node(30))
+obj.dequeue()
 obj.print()
