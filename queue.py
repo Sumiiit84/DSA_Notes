@@ -15,7 +15,7 @@ class LQueue:
     def __init__(self):
         self.front = self.rear = None
     def enqueue(self, data):
-        if self.rear:
+        if self.rear is not None:
             self.rear.next = data
             self.rear = data
         else:

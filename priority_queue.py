@@ -60,5 +60,5 @@ pq.enqueue(Node(4, 1))
 pq.enqueue(Node(5, 2))
 pq.enqueue(Node(6, 3))
 pq.enqueue(Node(7, 0))
-pq.dequeue()
+
 pq.printdata()

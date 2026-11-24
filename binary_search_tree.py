@@ -37,7 +37,6 @@ class BST:
             print(temp.data , end = ' ')
             self.inorder(temp.right)
     
-   
 btree = BST()
 btree.insert(Node(10))
 btree.insert(Node(5))
@@ -45,5 +44,6 @@ btree.insert(Node(2))
 btree.insert(Node(25))
 btree.insert(Node(13))
 btree.insert(Node(40))
-btree.inorder(btree.root)
-               
+btree.inorder(btree.root)         
+
+
