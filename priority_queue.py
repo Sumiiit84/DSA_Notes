@@ -22,7 +22,6 @@ class PriorityQueue:
             self.front = new_node
             return 
         else:
-            
             if self.front.priority > new_node.priority:
                 new_node.next = self.front
                 self.front = new_node
