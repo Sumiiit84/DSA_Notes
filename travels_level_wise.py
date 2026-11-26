@@ -1,0 +1,154 @@
+#BST using Linked List
+class Node:
+    def __init__(self, value):
+        self.left=None
+        self.data=value
+        self.right=None
+class BST:
+    def __init__(self):
+        self.root=None
+       
+    def insert(self, new_node):
+        if self.root is None: ##BST is empty
+            self.root=new_node
+        else:
+            temp=self.root
+            while True:
+                if new_node.data<temp.data: #left subtree
+                    if temp.left is None:
+                        temp.left=new_node
+                        return
+                    else:
+                        temp=temp.left
+                else: #right subree
+                    if temp.right is None:
+                        temp.right=new_node
+                        return
+                    else:
+                        temp=temp.right
+
+    
+                    
+    def inorder(self, rt):
+        if rt is None:
+            return
+        else:
+            self.inorder(rt.left)
+            print(rt.data, end=" ")
+            self.inorder(rt.right)
+    def preorder(self, rt):
+        if rt is None:
+            return
+        else:
+            print(rt.data, end=" ")
+            self.preorder(rt.left)
+            self.preorder(rt.right)
+    def postorder(self, rt):
+        if rt is None:
+            return
+        else:
+            self.postorder(rt.left)
+            self.postorder(rt.right)
+            print(rt.data, end=" ")
+    def findminmax(self):
+        temp=self.root
+        while temp.left:
+            temp=temp.left
+        print("\nMin: ", temp.data)
+        temp=self.root
+        while temp.right:
+            temp=temp.right
+        print("\nMax: ", temp.data)
+
+    def search(self, key):
+        temp = self.root
+        while temp:
+            if temp.data == key:
+                return True
+            elif key < temp.data:
+                temp = temp.left
+            else:
+                temp = temp.right
+        return False
+    
+    def del_node(self, rt, val):
+        if rt is None:
+            return 
+
+        if val< rt.data:
+            rt.left = self.del_node(rt.left, val)
+        elif val > rt.data:
+            rt.right = self.del_node(rt.right, val)
+            
+        else:
+            if rt.left is None: # Node with right child only 
+                return rt.right
+            elif rt.right is None: # Node with left child only
+                return rt.left
+
+            #Node has both left and right child
+
+            succ = self.get_successor(rt)
+            rt.data = succ.data
+
+            rt.right = self.del_node(rt.right, succ.data)
+        return rt
+
+    def get_successor(self, rt):
+            if rt is None:
+                return None
+            temp=rt.right
+            while temp.left:
+                temp=temp.left
+            return temp
+    
+    def level_order(self, rt):
+        if rt is None:
+            print("BST is empty")
+            return
+        arr = []
+        cnt = 0 #For counting visited node
+        level = 0
+        arr.append(rt)
+        while cnt < len(arr):
+            node_count = len(arr) - cnt  #Number of nodes to be visited 
+            print("\n Level:",level, end = " -> ")
+            for i in range(node_count):
+                temp = arr[cnt]
+                cnt += 1
+                print(temp.data, end=' ')
+                if temp.left:
+                    arr.append(temp.left)
+                if temp.right:
+                    arr.append(temp.right)
+            level += 1
+                   
+
+b1=BST()
+b1.insert(Node(100))
+b1.insert(Node(10))
+b1.insert(Node(450))
+b1.insert(Node(0))
+b1.insert(Node(65))
+b1.insert(Node(500))
+b1.insert(Node(50))
+b1.insert(Node(70))
+#print("\nInorder: ")
+#b1.inorder(b1.root)
+# print("\nNo of nodes: ",b1.cnt)
+# print("\nPreorder: ")
+# b1.preorder(b1.root)
+# print("\nPostorder: ")
+# b1.postorder(b1.root)
+# b1.findminmax()
+
+#b1.del_node(b1.root, 10)
+#print("\nInorder after deletion: ")
+#b1.inorder(b1.root)
+if b1.search(450):
+    print("\n Found the node")
+else:
+    print("\n not found the node")
+
+print("\n Level Order :- ")
+b1.level_order(b1.root)
